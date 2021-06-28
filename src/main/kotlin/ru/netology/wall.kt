@@ -21,9 +21,11 @@ data class Post(
     val postponed_id: Int
 )
 
+val service = WallService()
+
 fun main() {
     val post = Post(
-        id = 0,
+        id = 5,
         owner_id = 1,
         from_id = 2,
         created_by = 3,
@@ -42,7 +44,7 @@ fun main() {
         is_favorite = true,
         postponed_id = 7
     )
-    println(WallService.add(post))
+    println(service.add(post))
 
     val post1 = Post(
         id = 0,
@@ -64,7 +66,7 @@ fun main() {
         is_favorite = true,
         postponed_id = 77
     )
-    println(WallService.add(post1))
+    println(service.add(post1))
 
     val post2 = Post(
         id = 0,
@@ -87,5 +89,5 @@ fun main() {
         postponed_id = 777
     )
     println(post2)
-    println(WallService.update(post2))
+    println(service.update(post2))
 }
