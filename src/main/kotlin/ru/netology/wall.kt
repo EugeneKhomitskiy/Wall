@@ -24,38 +24,37 @@ data class Post(
     val markedAsAds: Boolean,
     val isFavorite: Boolean,
     val postponedId: Int
-) {
+)
 
-    class Comments {
-        val count = Int
-        val canPost = Boolean
-        val groupsCanPost = Boolean
-        val canClose = Boolean
-        val canOpen = Boolean
-    }
+class Comments {
+    val count = Int
+    val canPost = Boolean
+    val groupsCanPost = Boolean
+    val canClose = Boolean
+    val canOpen = Boolean
+}
 
-    class Copyright {
-        val id = Int
-        val link = String
-        val name = String
-        val type = String
-    }
+class Copyright {
+    val id = Int
+    val link = String
+    val name = String
+    val type = String
+}
 
-    class Likes {
-        val count = Int
-        val userLikes = Boolean
-        val canLike = Boolean
-        val canPublish = Boolean
-    }
+class Likes {
+    val count = Int
+    val userLikes = Boolean
+    val canLike = Boolean
+    val canPublish = Boolean
+}
 
-    class Reposts {
-        val count = Int
-        val userReposted = Boolean
-    }
+class Reposts {
+    val count = Int
+    val userReposted = Boolean
+}
 
-    class Views {
-        val count = Int
-    }
+class Views {
+    val count = Int
 }
 
 val service = WallService()
@@ -71,11 +70,11 @@ fun main() {
         replyOwnerId = 4,
         replyPostId = 5,
         friendsOnly = true,
-        comments = Post.Comments(),
-        copyright = Post.Copyright(),
-        likes = Post.Likes(),
-        reposts = Post.Reposts(),
-        views = Post.Views(),
+        comments = Comments(),
+        copyright = Copyright(),
+        likes = Likes(),
+        reposts = Reposts(),
+        views = Views(),
         postType = "post",
         signerId = 6,
         canPin = true,
@@ -98,11 +97,11 @@ fun main() {
         replyOwnerId = 44,
         replyPostId = 55,
         friendsOnly = true,
-        comments = Post.Comments(),
-        copyright = Post.Copyright(),
-        likes = Post.Likes(),
-        reposts = Post.Reposts(),
-        views = Post.Views(),
+        comments = Comments(),
+        copyright = Copyright(),
+        likes = Likes(),
+        reposts = Reposts(),
+        views = Views(),
         postType = "post",
         signerId = 66,
         canPin = true,
@@ -125,11 +124,11 @@ fun main() {
         replyOwnerId = 444,
         replyPostId = 555,
         friendsOnly = true,
-        comments = Post.Comments(),
-        copyright = Post.Copyright(),
-        likes = Post.Likes(),
-        reposts = Post.Reposts(),
-        views = Post.Views(),
+        comments = Comments(),
+        copyright = Copyright(),
+        likes = Likes(),
+        reposts = Reposts(),
+        views = Views(),
         postType = "post",
         signerId = 666,
         canPin = true,
@@ -142,4 +141,5 @@ fun main() {
     )
     println(post2)
     println(service.update(post2))
+
 }
