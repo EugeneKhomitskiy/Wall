@@ -2,91 +2,143 @@ package ru.netology
 
 data class Post(
     var id: Int,
-    val owner_id: Int,
-    val from_id: Int,
-    val created_by: Int,
+    val ownerId: Int,
+    val fromId: Int,
+    val createdBy: Int,
     val date: Int,
     val text: String,
-    val reply_owner_id: Int,
-    val reply_post_id: Int,
-    val friends_only: Boolean,
-    val post_type: String,
-    val signer_id: Int,
-    val can_pin: Boolean,
-    val can_delete: Boolean,
-    val can_edit: Boolean,
-    val is_pinned: Boolean,
-    val marked_as_ads: Boolean,
-    val is_favorite: Boolean,
-    val postponed_id: Int
-)
+    val replyOwnerId: Int,
+    val replyPostId: Int,
+    val friendsOnly: Boolean,
+    val comments: Comments?,
+    val copyright: Copyright?,
+    val likes: Likes?,
+    val reposts: Reposts?,
+    val views: Views?,
+    val postType: String,
+    val signerId: Int,
+    val canPin: Boolean,
+    val canDelete: Boolean,
+    val canEdit: Boolean,
+    val isPinned: Boolean,
+    val markedAsAds: Boolean,
+    val isFavorite: Boolean,
+    val postponedId: Int
+) {
+
+    class Comments {
+        val count = Int
+        val canPost = Boolean
+        val groupsCanPost = Boolean
+        val canClose = Boolean
+        val canOpen = Boolean
+    }
+
+    class Copyright {
+        val id = Int
+        val link = String
+        val name = String
+        val type = String
+    }
+
+    class Likes {
+        val count = Int
+        val userLikes = Boolean
+        val canLike = Boolean
+        val canPublish = Boolean
+    }
+
+    class Reposts {
+        val count = Int
+        val userReposted = Boolean
+    }
+
+    class Views {
+        val count = Int
+    }
+}
 
 val service = WallService()
 
 fun main() {
     val post = Post(
         id = 5,
-        owner_id = 1,
-        from_id = 2,
-        created_by = 3,
+        ownerId = 1,
+        fromId = 2,
+        createdBy = 3,
         date = 2222,
         text = "Hello",
-        reply_owner_id = 4,
-        reply_post_id = 5,
-        friends_only = true,
-        post_type = "post",
-        signer_id = 6,
-        can_pin = true,
-        can_delete = true,
-        can_edit = true,
-        is_pinned = true,
-        marked_as_ads = true,
-        is_favorite = true,
-        postponed_id = 7
+        replyOwnerId = 4,
+        replyPostId = 5,
+        friendsOnly = true,
+        comments = Post.Comments(),
+        copyright = Post.Copyright(),
+        likes = Post.Likes(),
+        reposts = Post.Reposts(),
+        views = Post.Views(),
+        postType = "post",
+        signerId = 6,
+        canPin = true,
+        canDelete = true,
+        canEdit = true,
+        isPinned = true,
+        markedAsAds = true,
+        isFavorite = true,
+        postponedId = 7
     )
     println(service.add(post))
 
     val post1 = Post(
         id = 0,
-        owner_id = 11,
-        from_id = 22,
-        created_by = 33,
+        ownerId = 11,
+        fromId = 22,
+        createdBy = 33,
         date = 2222,
         text = "Hello, Kotlin",
-        reply_owner_id = 44,
-        reply_post_id = 55,
-        friends_only = true,
-        post_type = "post",
-        signer_id = 66,
-        can_pin = true,
-        can_delete = true,
-        can_edit = true,
-        is_pinned = true,
-        marked_as_ads = true,
-        is_favorite = true,
-        postponed_id = 77
+        replyOwnerId = 44,
+        replyPostId = 55,
+        friendsOnly = true,
+        comments = Post.Comments(),
+        copyright = Post.Copyright(),
+        likes = Post.Likes(),
+        reposts = Post.Reposts(),
+        views = Post.Views(),
+        postType = "post",
+        signerId = 66,
+        canPin = true,
+        canDelete = true,
+        canEdit = true,
+        isPinned = true,
+        markedAsAds = true,
+        isFavorite = true,
+        postponedId = 77
     )
     println(service.add(post1))
 
     val post2 = Post(
         id = 0,
-        owner_id = 111,
-        from_id = 222,
-        created_by = 333,
+        ownerId = 111,
+        fromId = 222,
+        createdBy = 333,
         date = 4444,
         text = " ",
-        reply_owner_id = 444,
-        reply_post_id = 555,
-        friends_only = true,
-        post_type = "post",
-        signer_id = 666,
-        can_pin = true,
-        can_delete = true,
-        can_edit = true,
-        is_pinned = true,
-        marked_as_ads = true,
-        is_favorite = true,
-        postponed_id = 777
+        replyOwnerId = 444,
+        replyPostId = 555,
+        friendsOnly = true,
+        comments = Post.Comments(),
+        copyright = Post.Copyright(),
+        likes = Post.Likes(),
+        reposts = Post.Reposts(),
+        views = Post.Views(),
+        postType = "post",
+        signerId = 666,
+        canPin = true,
+        canDelete = true,
+        canEdit = true,
+        isPinned = true,
+        markedAsAds = true,
+        isFavorite = true,
+        postponedId = 777
     )
     println(post2)
     println(service.update(post2))
