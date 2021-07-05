@@ -34,6 +34,16 @@ class Comments {
     val canOpen = Boolean
 }
 
+data class Comment(
+    val ownerId: Int,
+    val postId: Int,
+    val fromGroup: Int,
+    val message: String,
+    val replyToComment: Int,
+    val stickerId: Int,
+    val guid: String
+)
+
 class Copyright {
     val id = Int
     val link = String
@@ -115,7 +125,7 @@ fun main() {
     println(service.add(post1))
 
     val post2 = Post(
-        id = 0,
+        id = 1,
         ownerId = 111,
         fromId = 222,
         createdBy = 333,
@@ -139,7 +149,17 @@ fun main() {
         isFavorite = true,
         postponedId = 777
     )
-    println(post2)
     println(service.update(post2))
 
+    val comment = Comment(
+        ownerId = 0,
+        postId = 1,
+        fromGroup = 0,
+        message = "Hello",
+        replyToComment = 0,
+        stickerId = 0,
+        guid = " "
+    )
+    println(comment)
+    service.createComment(comment)
 }
